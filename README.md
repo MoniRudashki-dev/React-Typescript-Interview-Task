@@ -1,73 +1,89 @@
-# React + TypeScript + Vite
+# Trip Card Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A small React + TypeScript app that displays a list of “trip cards” loaded from a local JSON file. It supports searching by trip name, sorting by rating, and viewing full details in a modal.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
 
-## React Compiler
+- React + TypeScript (Vite)
+- SASS (SCSS)
+- Local mock JSON (`public/data/data.json`)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js (LTS recommended)
+- pnpm
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Install
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+pnpm install
+
+Run (Development) - pnpm dev
+
+Build (Production) - pnpm build
+
+Preview (Production Build) - pnpm preview
+
+- Data Source
+
+Trips are loaded from: public/data/data.json
+
+The app fetches the file using: ${import.meta.env.BASE_URL}/data/data.json
+
+This keeps the path working even if the app is deployed under a subpath.
+
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+\*\*Features
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Fetch trips from a local JSON file
+- Loading and error states (with retry)
+- Responsive grid layout
+- Trip card shows:
+  Image
+  Name
+  Rating
+  Short description
+  “More Info” button
+  Modal with full trip details (long description)
+  Search by name (case-insensitive)
+  “Sort by rating” toggle for visible results
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+\*\*Project Structure
+
+- API
+- components
+- hooks
+- styles
+- types
+- utils
+
+Design Decisions
+
+- Container + presentational split Trips owns data and state; UI components stay focused and reusable.
+
+- Derived data via selector
+  Filtering and sorting are done in getVisibleTrips to keep render logic readable.
+
+- Reusable UI primitives
+  Modal and StateMessage provide consistent UI/UX without extra libraries.
+
+- SASS per component
+  SCSS is colocated with components to keep styles maintainable and scoped.
+
+\*\*Trade-offs
+
+- No external data/state libraries
+  React hooks are sufficient for this scope; fewer dependencies keeps it simple.
+
+- Modal accessibility scope
+  ESC close + overlay click close are included. Full focus-trap behavior is intentionally omitted for the assignment timeframe.
+
+- Local JSON instead of a real API
+  Matches the assignment requirement and keeps setup lightweight.
