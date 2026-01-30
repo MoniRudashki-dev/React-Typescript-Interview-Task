@@ -1,5 +1,11 @@
+import { FixedBackground } from "./components";
+
 function App() {
-  return <></>;
+  return (
+    <>
+      <FixedBackground />
+    </>
+  );
 }
 
 export default App;
