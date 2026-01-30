@@ -1,0 +1,74 @@
+.tripCard {
+  overflow: hidden;
+  border-radius: 16px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  color: #FFF;
+  background-color: #e8e2db50;
+}
+
+.tripCard__imageWrap {
+  aspect-ratio: 16 / 12;
+  background: #f2f2f2;
+  overflow: hidden;
+}
+
+.tripCard__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tripCard__body {
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.tripCard__header {
+  display: grid;
+  gap: 6px;
+}
+
+.tripCard__title {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.25;
+  font-family: var(--font-display-700);
+}
+
+.tripCard__rating {
+  font-size: 20px;
+  letter-spacing: 1px;
+  color: var(--color-amber);
+}
+
+.tripCard__description {
+  margin: 0;
+  color: #FFF;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.tripCard__actions {
+  margin-top: 4px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.tripCard__button {
+  height: 38px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+  font-family: var(--font-display-700);
+  text-transform: uppercase;
+  color: var(--color-navy);
+  letter-spacing: 0.10em;
+}
+
+.tripCard__button:hover {
+  background: #f7f7f7;
+}

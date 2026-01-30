@@ -2,3 +2,5 @@ export { default as FixedBackground } from "./FixedBackground";
 export { default as Trips } from "./Trips";
 export { default as StateMessage } from "./StateMessage";
 export { default as GlobalLoader } from "./GlobalLoader";
+export { default as TripCard } from "./TripCard";
+export { default as TripImage } from "./TripImage";

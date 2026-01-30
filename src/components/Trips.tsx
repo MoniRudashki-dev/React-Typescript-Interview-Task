@@ -4,6 +4,7 @@ import { useTrips } from "../hooks/useTrip";
 import "../styles/trips.scss";
 import { getVisibleTrips } from "../utils/getVisibleTrips";
 import StateMessage from "./StateMessage";
+import TripCard from "./TripCard";
 import GlobalLoader from "./GlobalLoader";
 
 export const Trips = () => {
@@ -33,7 +34,16 @@ export const Trips = () => {
   }
 
   const tripCardsContent =
-    !!visibleTrips && visibleTrips.map((trip) => <div key={trip.id}></div>);
+    !!visibleTrips &&
+    visibleTrips.map((trip) => (
+      <TripCard
+        key={trip.id}
+        trip={trip}
+        onMoreInfo={() => {
+          //TODO - open modal
+        }}
+      />
+    ));
 
   return (
     <>
