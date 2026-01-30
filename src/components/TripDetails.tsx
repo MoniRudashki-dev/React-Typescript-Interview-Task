@@ -1,5 +1,6 @@
 import type { Trip } from "../types";
 import "../styles/tripDetails.scss";
+import TripImage from "./TripImage";
 
 type TripDetailsProps = {
   trip: Trip;
@@ -8,7 +9,11 @@ type TripDetailsProps = {
 export const TripDetails = ({ trip }: TripDetailsProps) => {
   return (
     <div className="tripDetails">
-      <img className="tripDetails__image" src={trip.image} alt={trip.name} />
+      <TripImage
+        className="tripDetails__image"
+        src={trip.image}
+        alt={trip.name}
+      />
 
       <div className="tripDetails__meta">
         <span className="tripDetails__label">Rating</span>
