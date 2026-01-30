@@ -6,6 +6,7 @@ import { getVisibleTrips } from "../utils/getVisibleTrips";
 import StateMessage from "./StateMessage";
 import TripCard from "./TripCard";
 import GlobalLoader from "./GlobalLoader";
+import TripsToolbar from "./TripsToolbar";
 
 export const Trips = () => {
   const { trips, isLoading, errorMessage, reload } = useTrips();
@@ -50,6 +51,13 @@ export const Trips = () => {
       {isLoading && <GlobalLoader />}
       <div className="tripsPage content_wrapper">
         <h1 className="tripsPage__title">Trip Card Explorer</h1>
+
+        <TripsToolbar
+          searchTerm={searchTerm}
+          onSearchTermChange={setSearchTerm}
+          sortByRating={sortByRating}
+          onSortByRatingChange={setSortByRating}
+        />
 
         {!!visibleTrips?.length && !!trips && (
           <p className="tripsPage__meta">
