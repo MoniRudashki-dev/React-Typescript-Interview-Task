@@ -1,0 +1,51 @@
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+
+.modalDialog {
+  width: min(720px, 100%);
+  max-height: min(80vh, 900px);
+  overflow: auto;
+  background: #fff;
+  border-radius: 18px;
+  border: 1px solid #e6e6e6;
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.25);
+}
+
+.modalHeader {
+  padding: 14px 16px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modalTitle {
+  margin: 0;
+  font-size: 18px;
+}
+
+.modalClose {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.modalClose:hover {
+  background: #f7f7f7;
+}
+
+.modalBody {
+  padding: 16px;
+}

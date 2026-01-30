@@ -1,0 +1,30 @@
+.tripDetails {
+  display: grid;
+  gap: 12px;
+}
+
+.tripDetails__image {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid #eee;
+}
+
+.tripDetails__meta {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.tripDetails__label {
+  font-weight: 700;
+}
+
+.tripDetails__value {
+  color: #333;
+}
+
+.tripDetails__description {
+  margin: 0;
+  color: #444;
+  line-height: 1.5;
+}

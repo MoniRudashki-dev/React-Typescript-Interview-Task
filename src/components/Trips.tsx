@@ -7,11 +7,18 @@ import StateMessage from "./StateMessage";
 import TripCard from "./TripCard";
 import GlobalLoader from "./GlobalLoader";
 import TripsToolbar from "./TripsToolbar";
+import { TripDetails, TripModal } from ".";
+import type { Trip } from "../types";
 
 export const Trips = () => {
   const { trips, isLoading, errorMessage, reload } = useTrips();
   const [searchTerm, setSearchTerm] = useState("");
   const [sortByRating, setSortByRating] = useState(false);
+
+  const [selectedTrip, setSelectedTrip] = useState<Trip | null>(null);
+
+  const handleMoreInfo = (trip: Trip) => setSelectedTrip(trip);
+  const handleCloseModal = () => setSelectedTrip(null);
 
   const visibleTrips = useMemo(() => {
     if (!trips) return null;
@@ -41,7 +48,7 @@ export const Trips = () => {
         key={trip.id}
         trip={trip}
         onMoreInfo={() => {
-          //TODO - open modal
+          handleMoreInfo(trip);
         }}
       />
     ));
@@ -84,6 +91,14 @@ export const Trips = () => {
             )}
           </>
         )}
+
+        <TripModal
+          isOpen={selectedTrip !== null}
+          title={selectedTrip?.name ?? "Trip details"}
+          onClose={handleCloseModal}
+        >
+          {selectedTrip ? <TripDetails trip={selectedTrip} /> : null}
+        </TripModal>
       </div>
     </>
   );

@@ -4,3 +4,6 @@ export { default as StateMessage } from "./StateMessage";
 export { default as GlobalLoader } from "./GlobalLoader";
 export { default as TripCard } from "./TripCard";
 export { default as TripImage } from "./TripImage";
+export { default as TripModal } from "./Modal";
+export { default as TripDetails } from "./TripDetails";
+export { default as TripsToolbar } from "./TripsToolbar";

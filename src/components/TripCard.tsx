@@ -7,7 +7,7 @@ type TripCardProps = {
   onMoreInfo: (trip: Trip) => void;
 };
 
-export const TripCard = ({ trip }: TripCardProps) => {
+export const TripCard = ({ trip, onMoreInfo }: TripCardProps) => {
   return (
     <article className="tripCard glass">
       <div className="tripCard__imageWrap">
@@ -37,7 +37,7 @@ export const TripCard = ({ trip }: TripCardProps) => {
             type="button"
             className="tripCard__button"
             onClick={() => {
-              //TODO add modal
+              onMoreInfo(trip);
             }}
           >
             More Info
