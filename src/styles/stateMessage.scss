@@ -1,0 +1,43 @@
+.stateMessage {
+  max-width: 560px;
+  margin: 24px auto;
+  padding: 16px;
+  border: 1px solid #e6e6e6;
+  border-radius: 16px;
+
+  color: #fff;
+}
+
+.stateMessage__title {
+  margin: 0;
+  font-size: 16px;
+}
+
+.stateMessage__description {
+  margin: 8px 0 0;
+  color: #fff;
+  line-height: 1.5;
+}
+
+.stateMessage__actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.stateMessage__actions button {
+  height: 38px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+  font-family: var(--font-display-700);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.stateMessage__actions button:hover {
+  background: #f7f7f7;
+}

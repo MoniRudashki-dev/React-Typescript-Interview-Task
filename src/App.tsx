@@ -1,9 +1,10 @@
-import { FixedBackground } from "./components";
+import { FixedBackground, Trips } from "./components";
 
 function App() {
   return (
     <>
       <FixedBackground />
+      <Trips />
     </>
   );
 }
