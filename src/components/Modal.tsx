@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import "../styles/tripModal.scss";
 
 type ModalProps = {
@@ -9,6 +9,8 @@ type ModalProps = {
 };
 
 export const Modal = ({ isOpen, title, onClose, children }: ModalProps) => {
+  const overlay_ref = useRef<HTMLDivElement | null>(null);
+
   useEffect(() => {
     if (isOpen) return;
 
@@ -20,10 +22,21 @@ export const Modal = ({ isOpen, title, onClose, children }: ModalProps) => {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, onClose]);
 
+  useEffect(() => {
+    if (!isOpen) return;
+
+    (overlay_ref.current as HTMLDivElement).classList.add("modalOverlay-open");
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return (
-    <div className="modalOverlay" role="presentation" onClick={onClose}>
+    <div
+      ref={overlay_ref}
+      className="modalOverlay"
+      role="presentation"
+      onClick={onClose}
+    >
       <div
         className="modalDialog"
         role="dialog"
