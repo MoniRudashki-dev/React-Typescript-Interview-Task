@@ -15,6 +15,8 @@ export const Trips = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortByRating, setSortByRating] = useState(false);
 
+  const [showMore, setShowMore] = useState(false);
+
   const [selectedTrip, setSelectedTrip] = useState<Trip | null>(null);
 
   const handleMoreInfo = (trip: Trip) => setSelectedTrip(trip);
@@ -87,9 +89,26 @@ export const Trips = () => {
                 }
               />
             ) : (
-              <div className="tripsGrid">{tripCardsContent}</div>
+              <div className="tripsGrid">
+                {showMore
+                  ? tripCardsContent
+                  : tripCardsContent && tripCardsContent.slice(0, 9)}
+              </div>
             )}
           </>
+        )}
+
+        {!!visibleTrips && visibleTrips.length > 9 && (
+          <div className="tripsPage__showMore">
+            <button
+              type="button"
+              className="tripCard__button"
+              style={{ width: "100%" }}
+              onClick={() => setShowMore((prev) => !prev)}
+            >
+              {showMore ? "Show less" : "Show more"}
+            </button>
+          </div>
         )}
 
         <TripModal

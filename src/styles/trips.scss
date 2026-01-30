@@ -32,6 +32,11 @@
   width: 100%;
 }
 
+.tripsPage__showMore {
+  width: 100%;
+  margin-top: 16px;
+}
+
 @media (min-width: 640px) {
   .tripsGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
